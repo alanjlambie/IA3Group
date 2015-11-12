@@ -1,0 +1,146 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Butterfly Calendar Ambient Display</title>
+  </head>
+  <body>
+    <p id="p1">
+            <b>Butterfly Calendar Ambient Display</b>
+            <br/><br/>
+            <table>
+                <tr>
+                    <th>No. of Activities</th>
+                    <th>No. of hours </th>
+                </tr>
+                <tr>
+                    <td><input type="text" id="row" value="5" /> X</td>
+                    <td><input type="text" id="col" value="24" />Y</td>
+                </tr>
+            </table>
+            <br/>
+            <button type = "button" id="create" onclick="create()">create table</button>
+        </p>
+        <br/><br/>
+        <input type="button" value="Reload page" onclick="reloadPage()">
+        <script>
+        var a1= 0;
+        var a2= 0;
+        var a3 = 0;
+        var a4 = 0;
+        var a5 = 0;
+        var update =0;
+        var pa1= 0;
+        var pa2= 0;
+        var pa3 = 0;
+        var pa4 = 0;
+        var pa5 = 0;
+
+
+
+            function create() {
+                var col = parseInt(document.getElementById("col").value);
+                var row = parseInt(document.getElementById("row").value);
+
+
+
+                var tablestart="<table id=myTable border=1>";
+                var tableend = "</table>";
+                var trstart = "<tr bgcolor=#FFFFFF>";
+                var trend = "</tr>";
+                var tdstart = "<td>";
+                var tdend = "</td>";
+                var data="data in cell";
+                var str1=tablestart + trstart + tdstart + data + tdend + trend + tableend;
+
+
+
+                document.write(tablestart);
+
+                for (var c=1;c<col+1;c++) {
+                    document.write(trstart);
+                    for(var r=0; r<row+1; r++) {
+                        document.write(tdstart);
+                        if (r == 0){
+                          if (c<7) {
+                            var ampm = " AM";
+                            var displayTime =  c+5;
+                          }else if(c>6 && c < 18) {
+                            var ampm = " PM";
+                            var displayTime =  c-6;
+                          }else{
+                            var ampm = " AM";
+                            var displayTime =  c-18;
+                          }
+                          document.write(displayTime+ ampm);
+                        }else if (r == 1){
+                          var act1 = "<button id="+"Activity1"+" onclick="+"incrementActivity1()"+">Activity1</button>";
+                          document.write(act1);
+                          pa1 = a1;
+                        }else if (r == 2){
+                          var act2 = "<button id="+"Activity2"+" onclick="+"incrementActivity2()"+">Activity2</button>";
+                          document.write(act2);
+                          pa2 = a2;
+                        }else if (r == 3){
+                          var act3 = "<button id="+"Activity3"+" onclick="+"incrementActivity3()"+">Activity3</button>";
+                          document.write(act3);
+                          pa3 = a3;
+                        }else if (r == 4){
+                          var act4 = "<button id="+"Activity4"+" onclick="+"incrementActivity4()"+">Activity4</button>";
+                          document.write(act4);
+                          pa4 = a4;
+                        }else if (r == 5){
+                          var act5 = "<button id="+"Activity5"+" onclick="+"incrementActivity5()"+">Activity5</button>";
+                          document.write(act5);
+                          pa5 = a5;
+                        }
+                        document.write(tdend);
+                    }
+                }
+
+                document.write(tableend);
+                document.write("<br/>");
+                var relod="<button id="+"relod"+" onclick="+"reloadPage()"+">Reload Page </button>";
+                document.write(relod);
+            }
+
+
+            function incrementActivity1(){
+              a1++;
+              document.write("  Activity1:" + a1);
+              if(a1!=pa1){document.write(updated)}
+            }
+            function incrementActivity2(){
+              a2++;
+              document.write("  Activity2:" + a2);
+              if(a2!=pa2){document.write(updated)}
+            }
+            function incrementActivity3(){
+              a3++;
+              document.write("  Activity3:" + a3);
+              if(a3!=pa3){document.write(updated)}
+            }
+            function incrementActivity4(){
+              a4++;
+              document.write("  Activity4:" + a4);
+              if(a4!=pa4){document.write(updated)}
+            }
+            function incrementActivity5(){
+              a5++;
+              document.write("  Activity5:" + a5);
+              if(a5!=pa5){document.write(updated)}
+            }
+
+            function updateCheck(){
+              if(pa1 !=a1 ||pa2 !=a2 || pa3 !=a3 ||pa4 !=a4 ||pa5 !=a5 ){
+                update = 1;
+              }
+            }
+
+
+            function reloadPage(){
+                location.reload();
+
+            }
+        </script>
+  </body>
+</html>
